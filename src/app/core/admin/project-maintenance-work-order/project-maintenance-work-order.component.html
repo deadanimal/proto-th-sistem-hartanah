@@ -1,0 +1,407 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-9">
+          <h6 class="h2 text-dark d-inline-block mb-0">Work Order</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-pencil-ruler text-dark"> </i>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="text-dark">
+                  Property Maintenance
+                </a>
+              </li>
+              <li aria-current="page" class="breadcrumb-item active">
+                Work Order
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="col-3 text-right">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-sm btn-default"
+            (click)="openModal(addModal)"
+          >
+            Add Work Order
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col-7">
+              <h5 class="h3 m-0">Asset Type</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div
+              class="amchart"
+              id="chartdivadminprpertyworkorder1"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col-7">
+              <h5 class="h3 m-0">Work Order</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div
+              class="amchart"
+              id="chartdivadminprpertyworkorder2"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <h5 class="h3 mb-0">Work Order List</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    records
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+            >
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> No. </span>
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-row="row"
+                >
+                  {{ rowIndex + 1 }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Running No. </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.accNo }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Work Order </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.order }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Text </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.category }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Asset Type </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.type }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Company Status </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <span
+                    *ngIf="row.status == 'active'"
+                    class="badge badge-pill badge-warning"
+                    >Active</span
+                  >
+                  <span
+                    *ngIf="row.status == 'approved'"
+                    class="badge badge-pill badge-success"
+                    >Approved</span
+                  >
+                  <span
+                    *ngIf="row.status == 'reviewed'"
+                    class="badge badge-pill badge-info"
+                    >Reviewed</span
+                  >
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Action </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button
+                    class="btn btn-icon btn-default btn-sm"
+                    type="button"
+                    title="Edit"
+                    (click)="openModal(editNew)"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="fas fa-eye"> </i>
+                    </span>
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #addModal>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Add Work Order
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="form-control-label">Name</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Defect List</label>
+      <select class="form-control">
+        <option hidden selected>Please Pick</option>
+        <option value="1">Defect 1</option>
+        <option value="2">Defect 2</option>
+        <option value="3">Defect 3</option>
+        <option value="4">Defect 4</option>
+        <option value="5">Defect 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Asset Type</label>
+      <select class="form-control">
+        <option hidden selected>Please Pick</option>
+        <option value="1">Caisson Pile</option>
+        <option value="2">Bore Pile</option>
+        <option value="3">Micro Pile</option>
+        <option value="4">Crosshead</option>
+        <option value="5">Beam</option>
+        <option value="6">Parapet</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Rectification Activity</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        placeholder="Type here..."
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Budget Type</label>
+      <select class="form-control">
+        <option hidden selected>Please Pick</option>
+        <option value="1">Type 1</option>
+        <option value="2">Type 2</option>
+        <option value="3">Type 3</option>
+        <option value="4">Type 4</option>
+        <option value="5">Type 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Budget</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      (click)="successSwal1('saved')"
+    >
+      Save
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #editNew>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Edit Work Order
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="form-control-label">Name</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Defect List</label>
+      <select class="form-control">
+        <option hidden selected>Please Pick</option>
+        <option value="1">Defect 1</option>
+        <option value="2">Defect 2</option>
+        <option value="3">Defect 3</option>
+        <option value="4">Defect 4</option>
+        <option value="5">Defect 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Asset Type</label>
+      <select class="form-control">
+        <option hidden selected>Please Pick</option>
+        <option value="1">Caison Pile</option>
+        <option value="2">Bore Pile</option>
+        <option value="3">Micro Pile</option>
+        <option value="4">Crosshead</option>
+        <option value="5">Beam</option>
+        <option value="6">Parapet</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Rectification Activity</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        placeholder="Type here..."
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Budget Type</label>
+      <select class="form-control">
+        <option hidden selected>Please Pick</option>
+        <option value="1">Type 1</option>
+        <option value="2">Type 2</option>
+        <option value="3">Type 3</option>
+        <option value="4">Type 4</option>
+        <option value="5">Type 5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Budget</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      (click)="successSwal1('saved')"
+    >
+      Save
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

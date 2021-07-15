@@ -1,0 +1,512 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-12">
+          <h6 class="h2 text-dark d-inline-block mb-0">Contract Management</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-handshake text-dark"> </i>
+                </a>
+              </li>
+              <!-- <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="text-dark"> Procurement </a>
+              </li>
+              <li aria-current="page" class="breadcrumb-item active">
+                Procurement Management
+              </li> -->
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">No. of Contract Per Month</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartdivadminprocurementmanagement1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Contract Category</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartdivadminprocurementmanagement2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Contract Status</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartdivadminprocurementmanagement3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Contract to Review</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card card-stats">
+                <div class="card-body bg-info">
+                  <div class="row">
+                    <div class="trycent col">
+                      <h1 class="card-title display-1 text-uppercase mb-0">
+                        6
+                      </h1>
+
+                      <span class="h5 font-weight-bold mb-0">
+                        Contract without milestone
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card card-stats">
+                <div class="card-body bg-info">
+                  <div class="row">
+                    <div class="trycent col">
+                      <h1 class="card-title display-1 text-uppercase mb-0">
+                        10
+                      </h1>
+
+                      <span class="h5 font-weight-bold mb-0">
+                        Contract without tasks
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="trycent col">
+              <p class="mt-3 mb-0">
+                <span class="text-yellow">
+                  <i class="fas fa-exclamation-triangle"> </i>
+                </span>
+
+                <span class="text-nowrap">
+                  You have <strong>6 Contract</strong> without future milestones
+                  and
+                  <br />
+                  <strong>10 Contract</strong> without assigned tasks
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Find Contract</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label">PR No</label>
+
+                <input
+                  class="form-control"
+                  placeholder="Type here..."
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label">PO No</label>
+
+                <input
+                  class="form-control"
+                  placeholder="Type here..."
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label"
+                  >Supplier/Contract/Vendor Name
+                </label>
+
+                <input
+                  class="form-control"
+                  placeholder="Type here..."
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="col-lg-12 text-right">
+              <button
+                class="btn btn-default"
+                type="button"
+                (click)="successSwal('searched')"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col-7">
+              <h5 class="h3 m-0">Contract List</h5>
+            </div>
+            <div class="col-5 text-right">
+              <button
+                class="btn btn-default"
+                type="button"
+                (click)="openModal(assignto)"
+              >
+                New Contract
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    records
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+            >
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> PR No </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.prno }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> PO No </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.pono }} </ng-template
+                >date
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Supplier/Contract/Vendor Name </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.name }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Contract Cost </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.netMove }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Location </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.location }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Claim Record </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.credit }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Payment Record </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.debit }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Action </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <!-- <button
+                          class="btn btn-icon btn-success btn-sm"
+                          type="button"
+                          title="Update"
+                          (click)="openModal(addNew)"
+                        >
+                          <span class="btn-inner--icon">
+                            <i class="fas fa-edit"> </i>
+                          </span>
+                        </button> -->
+                  <button
+                    class="btn btn-icon btn-default btn-sm"
+                    type="button"
+                    title="View"
+                    (click)="openModal(addNew)"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="far fa-eye"> </i>
+                    </span>
+                  </button>
+                  <button
+                    class="btn btn-icon btn-danger btn-sm"
+                    type="button"
+                    title="Delete"
+                    (click)="delete()"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="fas fa-trash"> </i>
+                    </span>
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #assignto>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Add New
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="form-control-label">PR No</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">PO No</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Supplier/Contract/Vendor Name</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Contract Cost</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Location</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Claim Record</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Payment Record</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      (click)="successSwal1('saved')"
+    >
+      Save
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #addNew>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Edit
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label class="form-control-label">PR No</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">PO No</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Supplier/Contract/Vendor Name</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Contract Cost</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Location</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Claim Record</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Payment Record</label>
+      <input class="form-control" placeholder="Type here..." type="text" />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      (click)="successSwal1('saved')"
+    >
+      Save
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
